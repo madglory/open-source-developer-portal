@@ -41,14 +41,7 @@
         &:hover {
             text-decoration: none;
             border-color: $color-blue;
-            background-color: $color-blue;
             box-shadow: 0 0 5px rgba(44, 44, 44, 0.25);
-            h2 {
-                color: $color-white;
-            }
-            p {
-               color: $color-white; 
-            }
         }
 
         p {

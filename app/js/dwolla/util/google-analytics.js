@@ -1,15 +1,15 @@
 // this requires the ga (google analytics) object to be loaded.
-(function (dwolla) {
+(function (Gamelocker) {
     'use strict';
 
     var GOOGLE_TRACK_MAX_TRIES = 3,
         GOOGLE_TRACK_RETRY_SPEED = 1000;
 
     function addEventListeners() {
-        $('.js-track-link').on('click', dwolla.util.googleAnalytics.trackLink);
+        $('.js-track-link').on('click', Gamelocker.util.googleAnalytics.trackLink);
     }
 
-    dwolla.namespace('util.googleAnalytics', {
+    Gamelocker.namespace('util.googleAnalytics', {
 
         init: function () {
             addEventListeners();
@@ -25,7 +25,7 @@
             e.preventDefault();
             e.stopPropagation();
 
-            dwolla.util.googleAnalytics.trackEvent('outbound', 'click', url, function () {
+            Gamelocker.util.googleAnalytics.trackEvent('outbound', 'click', url, function () {
                 window.location = url;
             });
         },
@@ -40,7 +40,7 @@
                 //Google Analytics has not loaded yet
                 if (count <= GOOGLE_TRACK_MAX_TRIES) {
                     setTimeout(function () {
-                        dwolla.util.googleSnalytics.trackPageview(identifier, count);
+                        Gamelocker.util.googleSnalytics.trackPageview(identifier, count);
                     }, GOOGLE_TRACK_RETRY_SPEED);
                 }
             }
@@ -64,12 +64,12 @@
                 //Google Analytics has not loaded yet
                 if (count <= GOOGLE_TRACK_MAX_TRIES) {
                     setTimeout(function () {
-                        dwolla.util.googleAnalytics.trackPageview.trackEvent(cat, action, label, callback, count);
+                        Gamelocker.util.googleAnalytics.trackPageview.trackEvent(cat, action, label, callback, count);
                     }, GOOGLE_TRACK_RETRY_SPEED);
                 }
             }
         }
     });
 
-    $(dwolla.util.googleAnalytics.init);
-}(dwolla));
+    $(Gamelocker.util.googleAnalytics.init);
+}(Gamelocker));

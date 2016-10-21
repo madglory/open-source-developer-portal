@@ -2,16 +2,16 @@
 layout: twoColumn
 section: guides
 type: guide
-guide: 
+guide:
     name: webhooks
     step: overview
 title: Webhooks
-description: Webhooks for payments within your application by utilizing our open API with no per transaction fees. 
+description: Webhooks for payments within your application by utilizing our open API with no per transaction fees.
 ---
 
 # Webhooks
 
-A webhook is a means of notifying a third-party application of the occurrence of an event with some relevant information. In the Dwolla V2 API, webhooks are currently triggered by the following resources: 
+A webhook is a means of notifying a third-party application of the occurrence of an event with some relevant information. In the Gamelocker V2 API, webhooks are currently triggered by the following resources:
 
 - Customers
 - Documents
@@ -19,7 +19,7 @@ A webhook is a means of notifying a third-party application of the occurrence of
 - Transfers
 - Mass Payments
 
-Each webhook sent by the Dwolla API contains an `Event` with `_links` to: the associated resource, account associated with the event, and the customer associated with the event (if applicable). It is important to note that a single API request can trigger multiple webhooks to be fired, e.g. initiating a transfer from an Account to Customer can create the events `transfer_created` and `customer_transfer_created`. 
+Each webhook sent by the Gamelocker API contains an `Event` with `_links` to: the associated resource, account associated with the event, and the customer associated with the event (if applicable). It is important to note that a single API request can trigger multiple webhooks to be fired, e.g. initiating a transfer from an Account to Customer can create the events `transfer_created` and `customer_transfer_created`.
 
 *Important:* Webhooks are sent asynchronously and are not guaranteed to be delivered in order. We recommend that applications protect against duplicated events by making event processing idempotent.
 
@@ -32,16 +32,16 @@ Each webhook sent by the Dwolla API contains an `Event` with `_links` to: the as
   "timestamp": "2015-10-22T14:44:11.407Z",
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/events/80d8ff7d-7e5a-4975-ade8-9e97306d6c15"
+      "href": "https://api-uat.gamelocker.app/events/80d8ff7d-7e5a-4975-ade8-9e97306d6c15"
     },
     "account": {
-      "href": "https://api-uat.dwolla.com/accounts/b4cdac07-eeca-4059-a29c-48900e453d54"
+      "href": "https://api-uat.gamelocker.app/accounts/b4cdac07-eeca-4059-a29c-48900e453d54"
     },
     "resource": {
-      "href": "https://api-uat.dwolla.com/customers/36E9DCB2-889B-4873-8E52-0C9404EA002A"
+      "href": "https://api-uat.gamelocker.app/customers/36E9DCB2-889B-4873-8E52-0C9404EA002A"
     },
     "customer": {
-      "href": "https://api-uat.dwolla.com/customers/36E9DCB2-889B-4873-8E52-0C9404EA002A"
+      "href": "https://api-uat.gamelocker.app/customers/36E9DCB2-889B-4873-8E52-0C9404EA002A"
     }
   }
 }

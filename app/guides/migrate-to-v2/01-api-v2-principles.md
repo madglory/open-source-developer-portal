@@ -2,11 +2,11 @@
 layout: twoColumn
 section: guides
 type: guide
-guide: 
+guide:
     name: migrate-to-v2
     step: '1'
 title: Migrate to v2
-description: Underlying principles of Dwolla's v2 API and guidance on upgrading your application from Dwolla's legacy v1 API. 
+description: Underlying principles of Gamelocker's v2 API and guidance on upgrading your application from Gamelocker's legacy v1 API.
 ---
 
 # Migrate to v2
@@ -27,27 +27,27 @@ A resource is a JSON object (e.g. a Transfer object) that contains: properties t
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254",
+      "href": "https://api-uat.gamelocker.app/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254",
       "type": "account"
     },
     "receive": {
-      "href": "https://api-uat.dwolla.com/transfers",
+      "href": "https://api-uat.gamelocker.app/transfers",
       "type": "transfer"
     },
     "funding-sources": {
-      "href": "https://api-uat.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254/funding-sources",
+      "href": "https://api-uat.gamelocker.app/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254/funding-sources",
       "type": "funding-source"
     },
     "transfers": {
-      "href": "https://api-uat.dwolla.com/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254/transfers",
+      "href": "https://api-uat.gamelocker.app/accounts/ad5f2162-404a-4c4c-994e-6ab6c3a13254/transfers",
       "type": "transfer"
     },
     "customers": {
-      "href": "https://api-uat.dwolla.com/customers",
+      "href": "https://api-uat.gamelocker.app/customers",
       "type": "customer"
     },
     "send": {
-      "href": "https://api-uat.dwolla.com/transfers",
+      "href": "https://api-uat.gamelocker.app/transfers",
       "type": "transfer"
     }
   },
@@ -57,9 +57,9 @@ A resource is a JSON object (e.g. a Transfer object) that contains: properties t
 ```
 ### HTTP status codes and errors
 
-If you’re interacting with Dwolla’s v1 API, then you may know that it relies primarily on returning an HTTP 200 status code. A major improvement we made with v2 is returning meaningful HTTP status codes. These status codes can be leveraged by a client to easily handle responses without having to parse the entire response body.
+If you’re interacting with Gamelocker’s v1 API, then you may know that it relies primarily on returning an HTTP 200 status code. A major improvement we made with v2 is returning meaningful HTTP status codes. These status codes can be leveraged by a client to easily handle responses without having to parse the entire response body.
 
-In addition to meaningful status codes, [error responses](https://docsv2.dwolla.com/#errors) that are HTTP 4xx/5xx level return a well formed JSON response body that contains a unique top-level error `code` and a `message` with a detailed description of the error. 
+In addition to meaningful status codes, [error responses](https://docsv2.gamelocker.app/#errors) that are HTTP 4xx/5xx level return a well formed JSON response body that contains a unique top-level error `code` and a `message` with a detailed description of the error.
 
 ##### v1 error response
 

@@ -1,29 +1,29 @@
 ---
 layout: twoColumn
 section: guides
-guide: 
+guide:
     name: receive-money
     step: 1b
 type: guide
 title:  "Step 1: Direct onboarding"
 ---
 
-# Step 1: Create a Dwolla Direct account for the payer
+# Step 1: Create a Gamelocker Direct account for the payer
 
-In this experience, the end user is sent to Dwolla to create an account and then returned to your application upon completing the OAuth flow. If you prefer that your customers not create Dwolla accounts, choose the white label solution.
+In this experience, the end user is sent to Gamelocker to create an account and then returned to your application upon completing the OAuth flow. If you prefer that your customers not create Gamelocker accounts, choose the white label solution.
 
 ### Step A. Construct OAuth authorization request URL
 
-Create a URL to send the user to in order to create a new Dwolla Direct account.  When the user has created a Direct account, they’ll be prompted to give your application permission to access their account, and if they agree, they will be redirected back to your application.  More detail for implementing the OAuth flow can be found in the [API documentation](https://docsv2.dwolla.com/#oauth).
+Create a URL to send the user to in order to create a new Gamelocker Direct account.  When the user has created a Direct account, they’ll be prompted to give your application permission to access their account, and if they agree, they will be redirected back to your application.  More detail for implementing the OAuth flow can be found in the [API documentation](https://docsv2.gamelocker.app/#oauth).
 
-Be sure to request the `Send` and `Funding` scopes in the initial authorization request. By requesting the `Send` and `Funding` scopes Dwolla will prompt the user within the OAuth flow to attach a verified bank, which is needed in order to send money.
+Be sure to request the `Send` and `Funding` scopes in the initial authorization request. By requesting the `Send` and `Funding` scopes Gamelocker will prompt the user within the OAuth flow to attach a verified bank, which is needed in order to send money.
 
 URL Format:
-`https://www.dwolla.com/oauth/v2/authenticate?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&scope={scope}`
+`https://www.gamelocker.app/oauth/v2/authenticate?client_id={client_id}&response_type=code&redirect_uri={redirect_uri}&scope={scope}`
 
 Example URL:
 
-`https://uat.dwolla.com/oauth/v2/authenticate?client_id=PO%2BSzGAsZCE4BTG7Cw4OAL40Tpf1008mDjGBSVo6QLNfM4mD%2Ba&response_type=code&redirect_uri=https://example.com/return&scope=Send%7CTransactions%7CFunding&dwolla_landing=register`
+`https://uat.gamelocker.app/oauth/v2/authenticate?client_id=PO%2BSzGAsZCE4BTG7Cw4OAL40Tpf1008mDjGBSVo6QLNfM4mD%2Ba&response_type=code&redirect_uri=https://example.com/return&scope=Send%7CTransactions%7CFunding&Gamelocker_landing=register`
 
 ### Step B. Redirect back to your application and generate access token
 
@@ -34,7 +34,7 @@ The customer will complete their profile and attach a verified funding source.  
 `https://example.com/return?code=sZCE4BTG7Cw4O`
 
 ```rawnoselect
-POST https://uat.dwolla.com/oauth/v2/token
+POST https://uat.gamelocker.app/oauth/v2/token
 Content-Type: application/json
 
 {
@@ -52,7 +52,7 @@ Content-Type: application/json
 {
   "_links": {
     "account": {
-      "href": "https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
+      "href": "https://api-uat.gamelocker.app/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
     }
   },
   "access_token": "2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW",
@@ -67,13 +67,13 @@ Content-Type: application/json
 
 ### Step C. Get list of the user Account's funding sources
 
-Using the access token we just receieved, we’ll need to get the funding source ID of the bank account we’d like to use to fund the transfer.  
+Using the access token we just receieved, we’ll need to get the funding source ID of the bank account we’d like to use to fund the transfer.
 
-Use the [List an account's funding sources](https://docsv2.dwolla.com/#list-funding-sources-for-an-account) endpoint to fetch a list of the payer’s funding sources.  You first need to fetch [the root](https://docsv2.dwolla.com/#root) resource to determine the URL to get the account’s funding source list from.
+Use the [List an account's funding sources](https://docsv2.gamelocker.app/#list-funding-sources-for-an-account) endpoint to fetch a list of the payer’s funding sources.  You first need to fetch [the root](https://docsv2.gamelocker.app/#root) resource to determine the URL to get the account’s funding source list from.
 
 ```raw
-GET https://api.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources
-Accept: application/vnd.dwolla.v1.hal+json
+GET https://api.gamelocker.app/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources
+Accept: application/vnd.Gamelocker.v1.hal+json
 Authorization: Bearer 2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW
 
 ...
@@ -81,7 +81,7 @@ Authorization: Bearer 2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW
 {
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources"
+      "href": "https://api-uat.gamelocker.app/accounts/ca32853c-48fa-40be-ae75-77b37504581b/funding-sources"
     }
   },
   "_embedded": {
@@ -89,10 +89,10 @@ Authorization: Bearer 2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW
       {
         "_links": {
           "self": {
-            "href": "https://api-uat.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+            "href": "https://api-uat.gamelocker.app/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
           },
           "account": {
-            "href": "https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
+            "href": "https://api-uat.gamelocker.app/accounts/ca32853c-48fa-40be-ae75-77b37504581b"
           }
         },
         "id": "04173e17-6398-4d36-a167-9d98c4b1f1c3",
@@ -106,36 +106,36 @@ Authorization: Bearer 2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW
 }
 ```
 ```ruby
-account_url = 'https://api.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b'
+account_url = 'https://api.gamelocker.app/accounts/ca32853c-48fa-40be-ae75-77b37504581b'
 
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+# Using GamelockerV2 - https://github.com/Gamelocker/Gamelocker-v2-ruby (Recommended)
 funding_sources = account_token.get "#{account_url}/funding-sources"
 funding_sources._embedded['funding-sources'][0].name # => "Joe Buyer - Checking 1234"
 
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-funding_sources = DwollaSwagger::FundingsourcesApi.get_account_funding_sources(account_url)
+# Using GamelockerSwagger - https://github.com/Gamelocker/Gamelocker-swagger-ruby
+funding_sources = GamelockerSwagger::FundingsourcesApi.get_account_funding_sources(account_url)
 funding_sources._embedded[:'funding-sources'][0][:name] # => "Joe Buyer - Checking 1234"
 ```
 ```php
 <?php
-$accountUrl = 'https://api.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b';
+$accountUrl = 'https://api.gamelocker.app/accounts/ca32853c-48fa-40be-ae75-77b37504581b';
 
-$fsApi = new DwollaSwagger\FundingsourcesApi($apiClient);
+$fsApi = new GamelockerSwagger\FundingsourcesApi($apiClient);
 
 $fundingSources = $fsApi->getAccountFundingSources($accountUrl);
 $fundingSources->_embedded->{'funding-sources'}[0]->name); # => "Joe Buyer - Checking 1234"
 ?>
 ```
 ```python
-account_url = 'https://api.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b'
+account_url = 'https://api.gamelocker.app/accounts/ca32853c-48fa-40be-ae75-77b37504581b'
 
-fs_api = dwollaswagger.FundingsourcesApi(client)
+fs_api = Gamelockerswagger.FundingsourcesApi(client)
 funding_sources = fs_api.get_account_funding_sources(account_url)
 
 funding_sources._embedded['funding-sources'][0]['name'] # => Joe Buyer - Checking 1234
 ```
 ```javascript
-var accountUrl = 'https://api-uat.dwolla.com/accounts/ca32853c-48fa-40be-ae75-77b37504581b';
+var accountUrl = 'https://api-uat.gamelocker.app/accounts/ca32853c-48fa-40be-ae75-77b37504581b';
 
 accountToken
   .get(`${accountUrl}/funding-sources`)
@@ -146,21 +146,21 @@ accountToken
 
 ### Step D. Create a transfer to your account
 
-Finally, you can create a transfer from the payer’s bank account to your own account.  
+Finally, you can create a transfer from the payer’s bank account to your own account.
 
 
 ```raw
-POST https://api-uat.dwolla.com/transfers
-Accept: application/vnd.dwolla.v1.hal+json
-Content-Type: application/vnd.dwolla.v1.hal+json
+POST https://api-uat.gamelocker.app/transfers
+Accept: application/vnd.Gamelocker.v1.hal+json
+Content-Type: application/vnd.Gamelocker.v1.hal+json
 Authorization: Bearer 2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW
 {
     "_links": {
         "source": {
-            "href": "https://api-uat.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+            "href": "https://api-uat.gamelocker.app/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
         },
         "destination": {
-            "href": "https://api-uat.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c"
+            "href": "https://api-uat.gamelocker.app/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c"
         }
     },
     "amount": {
@@ -170,16 +170,16 @@ Authorization: Bearer 2U2HdYXyQfdZN4hQeQKstadbmqC40mrsVMmzi6Up62R36eFTHW
 }
 
 HTTP/1.1 201 Created
-Location: https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
+Location: https://api-uat.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
 ```
 ```ruby
 request_body = {
   :_links => {
     :source => {
-      :href => "https://api.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
+      :href => "https://api.gamelocker.app/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3"
     },
     :destination => {
-      :href => "https://api.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c"
+      :href => "https://api.gamelocker.app/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c"
     }
   },
   :amount => {
@@ -192,22 +192,22 @@ request_body = {
   }
 }
 
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+# Using GamelockerV2 - https://github.com/Gamelocker/Gamelocker-v2-ruby (Recommended)
 transfer = account_token.post "transfers", request_body
-transfer.headers[:location] # => "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
+transfer.headers[:location] # => "https://api.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
 
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-transfer = DwollaSwagger::TransfersApi.create(:body => request_body)
-transfer # => "https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
+# Using GamelockerSwagger - https://github.com/Gamelocker/Gamelocker-swagger-ruby
+transfer = GamelockerSwagger::TransfersApi.create(:body => request_body)
+transfer # => "https://api.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388"
 ```
 ```javascript
 var requestBody = {
   _links: {
     source: {
-      href: 'https://api.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
+      href: 'https://api.gamelocker.app/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
     },
     destination: {
-      href: 'https://api.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c'
+      href: 'https://api.gamelocker.app/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c'
     }
   },
   amount: {
@@ -223,17 +223,17 @@ var requestBody = {
 accountToken
   .post('transfers', requestBody)
   .then(function(res) {
-    res.headers.get('location'); // => 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388s'
+    res.headers.get('location'); // => 'https://api.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388s'
   });
 ```
 ```python
 request_body = {
   '_links': {
     'source': {
-      'href': 'https://api.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
+      'href': 'https://api.gamelocker.app/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3'
     },
     'destination': {
-      'href': 'https://api.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c'
+      'href': 'https://api.gamelocker.app/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c'
     }
   },
   'amount': {
@@ -246,40 +246,40 @@ request_body = {
   }
 }
 
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+# Using Gamelockerv2 - https://github.com/Gamelocker/Gamelocker-v2-python (Recommended)
 transfer = account_token.post('transfers', request_body)
-transfer.headers['location'] # => 'https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
+transfer.headers['location'] # => 'https://api-uat.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-transfers_api = dwollaswagger.TransfersApi(client)
+# Using Gamelockerswagger - https://github.com/Gamelocker/Gamelocker-swagger-python
+transfers_api = Gamelockerswagger.TransfersApi(client)
 transfer = transfers_api.create(body = request_body)
-transfer # => 'https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
+transfer # => 'https://api-uat.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 ```
 ```php
 <?php
 $transfer_request = array (
-  '_links' => 
+  '_links' =>
   array (
-    'source' => 
+    'source' =>
     array (
-      'href' => 'https://api-uat.dwolla.com/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3',
+      'href' => 'https://api-uat.gamelocker.app/funding-sources/04173e17-6398-4d36-a167-9d98c4b1f1c3',
     ),
-    'destination' => 
+    'destination' =>
     array (
-      'href' => 'https://api-uat.dwolla.com/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c',
+      'href' => 'https://api-uat.gamelocker.app/accounts/ab443d36-3757-44c1-a1b4-29727fb3111c',
     ),
   ),
-  'amount' => 
+  'amount' =>
   array (
     'currency' => 'USD',
     'value' => '225.00',
   )
 );
 
-$transferApi = new DwollaSwagger\TransfersApi($apiClient);
+$transferApi = new GamelockerSwagger\TransfersApi($apiClient);
 $myAccount = $transferApi->create($transfer_request);
 
-print($xfer); # => https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
+print($xfer); # => https://api-uat.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
 ?>
 ```
 

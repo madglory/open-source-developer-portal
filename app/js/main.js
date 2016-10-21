@@ -67,12 +67,12 @@ $(document).ready(function () {
     sp.summary({
         success: function (data) {
             // adds the text description to the dropdown
-            $('.dwolla-sp-status').text(data.status.description);
+            $('.Gamelocker-sp-status').text(data.status.description);
 
             if (data.status.description.indexOf('Outage') > -1) {
-                $('.dwolla-sp-status').addClass('icon-status-partially-degraded');
+                $('.Gamelocker-sp-status').addClass('icon-status-partially-degraded');
             } else {
-                $('.dwolla-sp-status').addClass('icon-status-operational');
+                $('.Gamelocker-sp-status').addClass('icon-status-operational');
             }
         }
     });

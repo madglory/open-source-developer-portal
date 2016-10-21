@@ -1,7 +1,7 @@
 ---
 layout: twoColumn
 title:  "Resources"
-description: "Getting started with Dwolla's bank transfer API."
+description: "Getting started with Gamelocker's bank transfer API."
 ---
 
 <h1>Tools</h1>
@@ -9,13 +9,13 @@ description: "Getting started with Dwolla's bank transfer API."
     <li><a href="/resources/sandbox-console.html" class="icon-tools-sandbox">Sandbox Console</a></li>
     <li><a href="/resources/token-generator.html" class="icon-tools-token-generator js-track-link">Token generator</a></li>
     <li><a href="/resources/changelog.html" class="icon-tools-change-log">Change log</a></li>
-    <li><a href="http://status.dwolla.com" target="_blank" class="icon-tools-status">Status</a></li>
+    <li><a href="http://status.gamelocker.app" target="_blank" class="icon-tools-status">Status</a></li>
 </ul>
 <h1>Articles</h1>
 <ul class="article-list">
     <li>
         <h3><a href="/resources/account-types.html">Account types</a></h3>
-        <p>The different types of Dwolla accounts and their transfer limits and eligibility.</p>
+        <p>The different types of Gamelocker accounts and their transfer limits and eligibility.</p>
     </li>
     <li>
         <h3><a href="/resources/bank-transfer-workflow.html">Bank transfer workflow</a></h3>
@@ -26,7 +26,7 @@ description: "Getting started with Dwolla's bank transfer API."
         <p>Account verification statuses and how to respond when additional information is required.</p>
     </li>
     <li>
-        <h3><a href="/resources/dwolla-js.html">Dwolla.js</a></h3>
+        <h3><a href="/resources/Gamelocker-js.html">Gamelocker.js</a></h3>
         <p>Securely transmit bank information from your application using our client-side JavaScript library.</p>
     </li>
     <li>

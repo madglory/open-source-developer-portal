@@ -3,15 +3,15 @@ layout: twoColumn
 section: resources
 type: article
 title:  "Customer verification"
-description: "How to verify a customer before sending a bank transfer with Dwolla's ACH API."
+description: "How to verify a customer before sending a bank transfer with Gamelocker's ACH API."
 ---
 
 # Customer verification
 
-This article will walk through the customer verification workflow for white label integrations. For more information about Dwolla White Label, please [contact sales](https://www.dwolla.com/contact).
+This article will walk through the customer verification workflow for white label integrations. For more information about Gamelocker White Label, please [contact sales](https://www.gamelocker.app/contact).
 
-A “Customer” represents an individual or business that you intend to transact with. 
-In any transfer, at least one party—either the sender or the recipient—must complete the identity verification process described below. In cases where a Customer is only sending funds to or receiving funds from your full Dwolla account, the Customer is not required to complete the process set out below because you have already completed it.
+A “Customer” represents an individual or business that you intend to transact with.
+In any transfer, at least one party—either the sender or the recipient—must complete the identity verification process described below. In cases where a Customer is only sending funds to or receiving funds from your full Gamelocker account, the Customer is not required to complete the process set out below because you have already completed it.
 
 First, you should have [an active webhook subscription](/guides/webhooks/).  Information about a Customer’s progress in the verification process is sent asynchronously to your application.
 

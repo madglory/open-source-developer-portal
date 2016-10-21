@@ -1,30 +1,30 @@
 ---
 layout: page
-title: Dwolla API Documentation
+title: Gamelocker API Documentation
 bodyClass: home
 description: The ACH API for bank transfers
 
 sampleRuby: >
     ```ruby
 
-    require 'dwolla_v2'
+    require 'Gamelocker_v2'
 
 
-    $dwolla = DwollaV2::Client.new(id: ENV["DWOLLA_ID"], secret: ENV["DWOLLA_SECRET"]) do |config|
+    $Gamelocker = GamelockerV2::Client.new(id: ENV["GAMELOCKER_ID"], secret: ENV["GAMELOCKER_SECRET"]) do |config|
         config.environment = :sandbox
     end
 
 
-    account_token = $dwolla.tokens.new access_token: "GnlMMOlLLTTwRRC44gGPkjfsVbVtwzkptDVdIB0fwGwLnV481N"
+    account_token = $Gamelocker.tokens.new access_token: "GnlMMOlLLTTwRRC44gGPkjfsVbVtwzkptDVdIB0fwGwLnV481N"
 
 
     request_body = {
       :_links => {
         :source => {
-          :href => "https://api-uat.dwolla.com/funding-sources/118b08b9-e1eb-48b7-94ad-866989b0764e"
+          :href => "https://api-uat.gamelocker.app/funding-sources/118b08b9-e1eb-48b7-94ad-866989b0764e"
         },
         :destination => {
-          :href => "https://api-uat.dwolla.com/funding-sources/2fa64102-185d-443d-9001-dda9bc37651d"
+          :href => "https://api-uat.gamelocker.app/funding-sources/2fa64102-185d-443d-9001-dda9bc37651d"
         }
       },
       :amount => {
@@ -36,7 +36,7 @@ sampleRuby: >
 
     transfer = account_token.post "transfers", request_body
 
-    transfer.headers[:location] # => "https://api-uat.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388"
+    transfer.headers[:location] # => "https://api-uat.gamelocker.app/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388"
 
     ```
 
@@ -44,35 +44,35 @@ sampleRaw: >
     ```raw
 
     curl -X POST -H "Authorization: Bearer GnlMMOlLLTTwRRC44gGPkjfsVbVtwzkptDVdIB0fwGwLnV481N" \
-    -H "Content-Type: application/vnd.dwolla.v1.hal+json" \
-    -H "Accept: application/vnd.dwolla.v1.hal+json" \
+    -H "Content-Type: application/vnd.Gamelocker.v1.hal+json" \
+    -H "Accept: application/vnd.Gamelocker.v1.hal+json" \
     -d '{
         "_links": {
             "source": {
-                "href": "https://api-uat.dwolla.com/funding-sources/118b08b9-e1eb-48b7-94ad-866989b0764e"
+                "href": "https://api-uat.gamelocker.app/funding-sources/118b08b9-e1eb-48b7-94ad-866989b0764e"
 
             },
             "destination": {
-                "href": "https://api-uat.dwolla.com/funding-sources/2fa64102-185d-443d-9001-dda9bc37651d"
+                "href": "https://api-uat.gamelocker.app/funding-sources/2fa64102-185d-443d-9001-dda9bc37651d"
             }
         },
         "amount": {
             "currency": "USD",
             "value": "1.00"
         }
-    }' 'https://api-uat.dwolla.com/transfers' -v
+    }' 'https://api-uat.gamelocker.app/transfers' -v
 
     ```
 
 samplePython: >
     ```python
 
-    import dwollav2
+    import Gamelockerv2
 
 
-    client = dwollav2.Client(
-      id = os.environ['DWOLLA_ID'],
-      secret = os.environ['DWOLLA_SECRET'],
+    client = Gamelockerv2.Client(
+      id = os.environ['GAMELOCKER_ID'],
+      secret = os.environ['GAMELOCKER_SECRET'],
       environment = 'sandbox'
     )
 
@@ -83,10 +83,10 @@ samplePython: >
     request_body = {
       '_links': {
         'source': {
-          'href': 'https://api-uat.dwolla.com/funding-sources/118b08b9-e1eb-48b7-94ad-866989b0764e'
+          'href': 'https://api-uat.gamelocker.app/funding-sources/118b08b9-e1eb-48b7-94ad-866989b0764e'
         },
         'destination': {
-          'href': 'https://api-uat.dwolla.com/funding-sources/2fa64102-185d-443d-9001-dda9bc37651d'
+          'href': 'https://api-uat.gamelocker.app/funding-sources/2fa64102-185d-443d-9001-dda9bc37651d'
         }
       },
       'amount': {
@@ -98,7 +98,7 @@ samplePython: >
 
     transfer = account_token.post('transfers', request_body)
 
-    transfer.headers['location'] # => 'https://api-uat.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388'
+    transfer.headers['location'] # => 'https://api-uat.gamelocker.app/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388'
 
     ```
 
@@ -107,10 +107,10 @@ samplePHP: >
 
     <?php
 
-    DwollaSwagger\Configuration::$auth_token = 'GnlMMOlLLTTwRRC44gGPkjfsVbVtwzkptDVdIB0fwGwLnV481N';
+    GamelockerSwagger\Configuration::$auth_token = 'GnlMMOlLLTTwRRC44gGPkjfsVbVtwzkptDVdIB0fwGwLnV481N';
 
 
-    $apiClient = new DwollaSwagger\ApiClient("https://api-uat.dwolla.com/");
+    $apiClient = new GamelockerSwagger\ApiClient("https://api-uat.gamelocker.app/");
 
 
     $transfer_request = array (
@@ -118,11 +118,11 @@ samplePHP: >
       array (
         'source' =>
         array (
-          'href' => 'https://api-uat.dwolla.com/funding-sources/118b08b9-e1eb-48b7-94ad-866989b0764e',
+          'href' => 'https://api-uat.gamelocker.app/funding-sources/118b08b9-e1eb-48b7-94ad-866989b0764e',
         ),
         'destination' =>
         array (
-          'href' => 'https://api-uat.dwolla.com/funding-sources/2fa64102-185d-443d-9001-dda9bc37651d',
+          'href' => 'https://api-uat.gamelocker.app/funding-sources/2fa64102-185d-443d-9001-dda9bc37651d',
         ),
       ),
       'amount' =>
@@ -133,12 +133,12 @@ samplePHP: >
     );
 
 
-    $transferApi = new DwollaSwagger\TransfersApi($apiClient);
+    $transferApi = new GamelockerSwagger\TransfersApi($apiClient);
 
 
     $myAccount = $transferApi->create($transfer_request);
 
-    print($xfer); # => https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
+    print($xfer); # => https://api-uat.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
 
     ?>
 
@@ -147,10 +147,10 @@ samplePHP: >
 sampleJavascript: >
     ```javascript
 
-    var dwolla = require('dwolla-v2');
+    var Gamelocker = require('Gamelocker-v2');
 
 
-    var client = new dwolla.Client({id: "...", secret: "..."});
+    var client = new Gamelocker.Client({id: "...", secret: "..."});
 
 
     var accountToken = new client.Token({access_token: "GnlMMOlLLTTwRRC44gGPkjfsVbVtwzkptDVdIB0fwGwLnV481N"});
@@ -159,10 +159,10 @@ sampleJavascript: >
     var requestBody = {
       _links: {
         source: {
-          href: 'https://api-uat.dwolla.com/funding-sources/118b08b9-e1eb-48b7-94ad-866989b0764e'
+          href: 'https://api-uat.gamelocker.app/funding-sources/118b08b9-e1eb-48b7-94ad-866989b0764e'
         },
         destination: {
-          href: 'https://api-uat.dwolla.com/funding-sources/2fa64102-185d-443d-9001-dda9bc37651d'
+          href: 'https://api-uat.gamelocker.app/funding-sources/2fa64102-185d-443d-9001-dda9bc37651d'
         }
       },
       amount: {
@@ -175,7 +175,7 @@ sampleJavascript: >
     accountToken
       .post('transfers', requestBody)
       .then(function(res) {
-        res.headers.get('location'); // => 'https://api-uat.dwolla.com/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388'
+        res.headers.get('location'); // => 'https://api-uat.gamelocker.app/transfers/74c9129b-d14a-e511-80da-0aa34a9b2388'
       });
 
     ```
@@ -186,7 +186,7 @@ sampleJavascript: >
     </section>
     <section class="cnt-one-col__banner banner">
         <div class="page-wrap">
-            <h1 class="icon-home-api icon">Simple and powerful API for ACH transfers with no per transaction fees</h1>
+            <h1 class="icon-home-api icon">Simple and powerful API for sharing the power of your game data</h1>
             <a href="/guides/" class="btn primary large">View all guides</a>
         </div>
         <div class="banner__background"></div>
@@ -205,13 +205,13 @@ sampleJavascript: >
         <section class="split-options">
             <div>
                 <h3 class="icon-home-sandbox">Set up Sandbox</h3>
-                <p>uat.dwolla.com</p>
+                <p>uat.gamelocker.app</p>
                 <a href="/guides/sandbox-setup/" class="btn secondary large">Test our service</a>
             </div>
             <div>
                 <h3 class="icon-home-launch">Launch in production</h3>
-                <p>www.dwolla.com</p>
-                <a href="https://www.dwolla.com/applications/create" class="btn secondary large">Get API key</a>
+                <p>www.gamelocker.app</p>
+                <a href="https://www.gamelocker.app/applications/create" class="btn secondary large">Get API key</a>
             </div>
         </section>
     </section>

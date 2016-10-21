@@ -2,18 +2,18 @@
 layout: twoColumn
 section: guides
 type: guide
-guide: 
+guide:
     name: webhooks
     step: '3'
 title: Webhooks
-description: Webhooks for payments within your application by utilizing our open API with no per transaction fees. 
+description: Webhooks for payments within your application by utilizing our open API with no per transaction fees.
 ---
 
 # Validating webhooks
 
 Assume that your integration is an online marketplace, and that a customer just placed an order on your site. A few days after the customer initiated their payment, your application receives this webhook.
 
-The `topic` field of an event holds [a description](http://docsv2.dwolla.com/#events) of the event, which is similar the subject of an e-mail message.  The `webhook` itself contains _links the the resource impacted by the event that can be used to retrieve more information about the webhook you have received. 
+The `topic` field of an event holds [a description](http://docsv2.gamelocker.app/#events) of the event, which is similar the subject of an e-mail message.  The `webhook` itself contains _links the the resource impacted by the event that can be used to retrieve more information about the webhook you have received.
 
 **NOTE**: The `event` must be retrieved with a `client_credentials` granted access_token.
 
@@ -26,27 +26,27 @@ The `topic` field of an event holds [a description](http://docsv2.dwolla.com/#ev
   "timestamp": "2015-10-23T15:35:35.366Z",
   "_links": {
     "self": {
-      "href": "https://api-uat.dwolla.com/events/2c311238-b9ef-4763-b1cb-03e1aa651227"
+      "href": "https://api-uat.gamelocker.app/events/2c311238-b9ef-4763-b1cb-03e1aa651227"
     },
     "account": {
-      "href": "https://api-uat.dwolla.com/accounts/b4cdac07-eeca-4059-a29c-48900e453d54"
+      "href": "https://api-uat.gamelocker.app/accounts/b4cdac07-eeca-4059-a29c-48900e453d54"
     },
     "resource": {
-      "href": "https://api-uat.dwolla.com/transfers/0089A051-9B79-E511-80DB-0AA34A9B2388"
+      "href": "https://api-uat.gamelocker.app/transfers/0089A051-9B79-E511-80DB-0AA34A9B2388"
     }
   }
 }
 ```
 
 #### Step A. Authenticating the webhook request
-Before we process any data from the webhook we’ll want to validate that the request really came from Dwolla and not someone pretending to be Dwolla. Dwolla signs each webhook request with the `secret` you passed in when you created the webhook subscription. The signature is contained in the `X-Request-Signature-Sha-256` header and is a SHA256 HMAC hash of the request body with the key being your webhook secret.
+Before we process any data from the webhook we’ll want to validate that the request really came from Gamelocker and not someone pretending to be Gamelocker. Gamelocker signs each webhook request with the `secret` you passed in when you created the webhook subscription. The signature is contained in the `X-Request-Signature-Sha-256` header and is a SHA256 HMAC hash of the request body with the key being your webhook secret.
 
 You can validate the webhook by generating the same SHA256 HMAC hash and comparing it to the signature sent with the payload.
 
 ```ruby
 def verify_signature(payload_body, request_signature)
   signature = OpenSSL::HMAC.hexdigest(OpenSSL::Digest.new("sha256"),
-ENV["DWOLLA_WEBHOOK_SECRET"],
+ENV["GAMELOCKER_WEBHOOK_SECRET"],
 payload_body)
   unless Rack::Utils.secure_compare(signature, request_signature)
     halt 500, "Signatures didn't match!"
@@ -87,7 +87,7 @@ function verifyGatewaySignature($proposedSignature, $webhookSecret, $payloadBody
 
 It is important to consider that multiple webhooks are fired for the same action on certain events. For example, multiple webhooks are fired for `Transfer` events, that is, two `transfer_created` events with different resource IDs (and, by extension, resource URLs) will be fired, one for each customer. To avoid doing any business logic twice, you would have to check if you have already received a webhook relating to the `Transfer` resource responsible for the event.
 
-To do this, keep a queue of events in a database and check to see if an `Event` has the same `self` resource location in `_links` as another event. If not, process the logic for that event. To illustrate, this is how a developer would implement this using Ruby and the ActiveRecord ORM. 
+To do this, keep a queue of events in a database and check to see if an `Event` has the same `self` resource location in `_links` as another event. If not, process the logic for that event. To illustrate, this is how a developer would implement this using Ruby and the ActiveRecord ORM.
 
 ##### Ruby/ActiveRecord
 ```rubynoselect

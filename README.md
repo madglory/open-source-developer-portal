@@ -1,13 +1,10 @@
-# About Dwolla
+# About Gamelocker
 
-Dwolla is a software platform that makes it easy to move money between banks. When using Dwolla APIs your software platform can move money between any 2 bank accounts, or network members, with no transaction fees. 
+Gamelockers is a software platform that makes it easy to make your game data available to developers. The Gamelocker APIs provide a standard format to allow your partners to access your game data. The developer documents are designed to support our development partners who are building on top of Gamelocker's branded platform.
 
-Our software platform is compatible with all banks in the United States. The developer documents are designed to support our development partners who are building on top of Dwolla's branded platform (v1) or our white labeled infrastructure (v2).
+The Gamelocker API developer portal lives here: https://developers.gamelocker.app
 
-The Dwolla API developer portal lives here: https://developers.dwolla.com
-
-Our v1 API documentation is available here: https://docs.dwolla.com/
-Our v2 API documentation is available here: https://docsv2.dwolla.com/
+Our v1 API documentation is available here: https://docs.gamelocker.app/
 
 # About the Open Source Developer Portal
 
@@ -15,31 +12,31 @@ This developer portal was designed to provide a starting point for our developer
 
 ### Beautiful (and intuitive) design
 
-As seen here: https://developers.dwolla.com/
+As seen here: https://developers.gamelocker.app/
 
 ### A simple directory for adding integration guides
 
-As seen here: https://developers.dwolla.com/guides/
+As seen here: https://developers.gamelocker.app/guides/
 
 ### A resource portal
 
-As seen here: https://developers.dwolla.com/resources/
+As seen here: https://developers.gamelocker.app/resources/
 
 ### A framework for showing samples in multiple languages
 
-As seen here: https://docsv2.dwolla.com/
+As seen here: https://docsv2.gamelocker.app/
 
 ### A SDK directory
 
-As seen here: https://developers.dwolla.com/pages/sdks.html
+As seen here: https://developers.gamelocker.app/pages/sdks.html
 
 ### The ability to use multiple API versions
 
-As seen here: https://docsv2.dwolla.com/
+As seen here: https://docsv2.gamelocker.app/
 
-# dwolla-devportal
+# Gamelocker-devportal
 
-Dwolla's next-generation developer portal.  This is a jekyll-based site that compiles down to a set of static assets which live on GitHub Pages. Dwolla's developer portal can be seen here - https://developers.dwolla.com/
+Gamelocker's next-generation developer portal.  This is a jekyll-based site that compiles down to a set of static assets which live on GitHub Pages. Gamelocker's developer portal can be seen here - https://developers.gamelocker.app/
 
 Skeleton generated using [generator-jekyllrb](https://github.com/robwierzbowski/generator-jekyllrb).
 
@@ -52,6 +49,12 @@ Clone this repo.  Then, you'll want to install dependencies:
 ```
 bundle install
 npm install
+```
+
+If you don't have [grunt](http://gruntjs.com/getting-started) installed
+
+```
+npm install -g grunt-cli
 ```
 
 To build and serve the site on localhost, do:
@@ -68,7 +71,7 @@ To deploy changes to the gh-pages branch, do:
 grunt deploy
 ```
 
-If you're trying to deploy changes to the actual Dwolla repo, you'll need to make sure you're allowed to.  Only Dwolla organization members can do this.
+If you're trying to deploy changes to the actual Gamelocker repo, you'll need to make sure you're allowed to.  Only Gamelocker organization members can do this.
 
 Otherwise, if you're deploying to your own repo, make sure you edit the `buildcontrol.dist.options.remote` to be the URL of your git repo.  You'll probably also want to edit `app/CNAME` to use your own CNAME.
 
@@ -76,7 +79,7 @@ Otherwise, if you're deploying to your own repo, make sure you edit the `buildco
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Dwolla
+Copyright (c) 2016 Gamelocker
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

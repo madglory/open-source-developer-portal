@@ -2,67 +2,67 @@
 layout: twoColumn
 section: guides
 type: guide
-guide: 
+guide:
     name: sandbox-setup
     step: '4'
 title:  Get started with integrating ACH transfers into your application
-description: Use this guide to start sending payments from your application by utilizing our open API with no per transaction fees. 
+description: Use this guide to start sending payments from your application by utilizing our open API with no per transaction fees.
 ---
 
 # Using an SDK? Enable Sandbox mode
 
-To use the Sandbox environment with our API V2 SDKs, either set the environment to `sandbox` or provide `https://api-uat.dwolla.com/` as the hostname if using a Swagger client.
+To use the Sandbox environment with our API V2 SDKs, either set the environment to `sandbox` or provide `https://api-uat.gamelocker.app/` as the hostname if using a Swagger client.
 
 ```raw
 not available
 ```
 ```javascript
-var dwolla = require('dwolla-v2');
+var Gamelocker = require('Gamelocker-v2');
 
-var client = new dwolla.Client({
-  id: process.env.DWOLLA_ID,
-  secret: process.env.DWOLLA_SECRET,
+var client = new Gamelocker.Client({
+  id: process.env.GAMELOCKER_ID,
+  secret: process.env.GAMELOCKER_SECRET,
   environment: 'sandbox',
 });
 ```
 ```ruby
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
-require 'dwolla_v2'
+# Using GamelockerV2 - https://github.com/Gamelocker/Gamelocker-v2-ruby (Recommended)
+require 'Gamelocker_v2'
 
-$dwolla = DwollaV2::Client.new(id: ENV["DWOLLA_ID"], secret: ENV["DWOLLA_SECRET"]) do |config|
+$Gamelocker = GamelockerV2::Client.new(id: ENV["GAMELOCKER_ID"], secret: ENV["GAMELOCKER_SECRET"]) do |config|
   config.environment = :sandbox
 end
 
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-require 'dwolla_swagger'
+# Using GamelockerSwagger - https://github.com/Gamelocker/Gamelocker-swagger-ruby
+require 'Gamelocker_swagger'
 
-DwollaSwagger::Swagger.configure do |config|
-    config.host = 'api-uat.dwolla.com'
+GamelockerSwagger::Swagger.configure do |config|
+    config.host = 'api-uat.gamelocker.app'
 end
 ```
 ```python
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
-client = dwollav2.Client(
-  id = os.environ['DWOLLA_ID'],
-  secret = os.environ['DWOLLA_SECRET'],
+# Using Gamelockerv2 - https://github.com/Gamelocker/Gamelocker-v2-python (Recommended)
+client = Gamelockerv2.Client(
+  id = os.environ['GAMELOCKER_ID'],
+  secret = os.environ['GAMELOCKER_SECRET'],
   environment = 'sandbox'
 )
 
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-client = dwollaswagger.ApiClient('https://api-uat.dwolla.com')
+# Using Gamelockerswagger - https://github.com/Gamelocker/Gamelocker-swagger-python
+client = Gamelockerswagger.ApiClient('https://api-uat.gamelocker.app')
 ```
 ```php
 /**
- * Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-php
+ * Using GamelockerSwagger - https://github.com/Gamelocker/Gamelocker-swagger-php
  */
 <?php
 require('../path/to/vendor/autoload.php');
 
-$apiClient = new DwollaSwagger\ApiClient("https://api-uat.dwolla.com/");
+$apiClient = new GamelockerSwagger\ApiClient("https://api-uat.gamelocker.app/");
 ?>
 ```
 
-You’re all set! With Sandbox mode enabled, you’re ready to start sending money in the Sandbox. 
+You’re all set! With Sandbox mode enabled, you’re ready to start sending money in the Sandbox.
 
 <nav class="pager-nav">
     <a href="./02-create-application.html">Back: Create an application</a>

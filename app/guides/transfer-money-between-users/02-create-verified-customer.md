@@ -12,12 +12,12 @@ title:  "Step 2: Create a verified customer"
 
 First, we’ll create a verified customer for Jane Merchant.
 
-The following information is required for a verified Customer. In this example, we use personal verified customers and we’re adding support for business customers coming soon. 
+The following information is required for a verified Customer. In this example, we use personal verified customers and we’re adding support for business customers coming soon.
 
 ```raw
-POST https://api-uat.dwolla.com/customers
-Content-Type: application/vnd.dwolla.v1.hal+json
-Accept: application/vnd.dwolla.v1.hal+json
+POST https://api-uat.gamelocker.app/customers
+Content-Type: application/vnd.Gamelocker.v1.hal+json
+Accept: application/vnd.Gamelocker.v1.hal+json
 Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 {
   "firstName": "John",
@@ -34,10 +34,10 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 }
 
 HTTP/1.1 201 Created
-Location: https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
+Location: https://api-uat.gamelocker.app/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
 ```
 ```ruby
-new_customer = DwollaSwagger::CustomersApi.create({:body => {
+new_customer = GamelockerSwagger::CustomersApi.create({:body => {
   :firstName => 'Bob',
   :lastName => 'Merchant',
   :email => 'bmerchant@nomail.net',
@@ -48,19 +48,19 @@ new_customer = DwollaSwagger::CustomersApi.create({:body => {
   :postalCode => '11101',
   :dateOfBirth => '1970-01-01',
 
-  # For the first attempt, only 
+  # For the first attempt, only
   # the last 4 digits of SSN required
 
-  # If the entire SSN is provided, 
+  # If the entire SSN is provided,
   # it will still be accepted
 
   :ssn => '1234'}})
 
-p new_customer # => https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
+p new_customer # => https://api-uat.gamelocker.app/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
 ```
 ```javascript
-dwolla.then(function(dwolla) {
-    dwolla.customers.create({
+Gamelocker.then(function(Gamelocker) {
+    Gamelocker.customers.create({
         "firstName": "Bob",
         "lastName": "Merchant",
         "email": "bmerchant@nomail.net",
@@ -72,43 +72,43 @@ dwolla.then(function(dwolla) {
         "postalCode": "11101",
         "dateOfBirth": "1970-01-01",
 
-        // For the first attempt, only 
+        // For the first attempt, only
         // the last 4 digits of SSN required
 
-        // If the entire SSN is provided, 
+        // If the entire SSN is provided,
         // it will still be accepted
         "ssn": "1234"
       })
       .then(function(data) {
-          console.log(data); // https://api-uat.dwolla.com/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F
+          console.log(data); // https://api-uat.gamelocker.app/customers/FC451A7A-AE30-4404-AB95-E3553FCD733F
       });
 });
 ```
 ```python
-customers_api = dwollaswagger.CustomersApi(client)
+customers_api = Gamelockerswagger.CustomersApi(client)
 
-new_customer = customers_api.create(body = {'firstName': 'Bob', 
+new_customer = customers_api.create(body = {'firstName': 'Bob',
                                             'lastName': 'Merchant',
                                             'email': 'bmerchant@nomail.net',
                                             'type': 'personal',
                                             'address': '99-99 33rd St',
-                                            'city': 'Some City', 
+                                            'city': 'Some City',
                                             'state': 'NY',
                                             'postalCode': '11101',
-                                            'dateOfBirth': '1970-01-01', 
+                                            'dateOfBirth': '1970-01-01',
 
-                                            # For the first attempt, only 
+                                            # For the first attempt, only
                                             # the last 4 digits of SSN required
 
-                                            # If the entire SSN is provided, 
+                                            # If the entire SSN is provided,
                                             # it will still be accepted
                                             'ssn': '1234'})
 
-print(new_customer) # => https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
+print(new_customer) # => https://api-uat.gamelocker.app/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
 ```
 ```php
 <?php
-$customersApi = new DwollaSwagger\CustomersApi($apiClient);
+$customersApi = new GamelockerSwagger\CustomersApi($apiClient);
 
 $new_customer = $customersApi->create([
   'firstName' => 'Bob',
@@ -121,15 +121,15 @@ $new_customer = $customersApi->create([
   'postalCode' => '11101',
   'dateOfBirth' => '1970-01-01',
 
-  # For the first attempt, only 
+  # For the first attempt, only
   # the last 4 digits of SSN required
 
-  # If the entire SSN is provided, 
+  # If the entire SSN is provided,
   # it will still be accepted
   'ssn' => '1234'
 ]);
 
-print($new_customer); # => https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
+print($new_customer); # => https://api-uat.gamelocker.app/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
 ?>
 ```
 ```java
@@ -149,7 +149,7 @@ myNewCust.setDateOfBirth("1970-01-01");
 
 try {
     Unit$ r = cApi.create(myNewCust);
-    System.out.println(r.getLocationHeader()); // => https://api-uat.dwolla.com/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
+    System.out.println(r.getLocationHeader()); // => https://api-uat.gamelocker.app/customers/AB443D36-3757-44C1-A1B4-29727FB3111C
 }
 catch (Exception e) {
     System.out.println("Something's up!");

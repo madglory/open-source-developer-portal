@@ -14,34 +14,34 @@ You can check the status of the newly created transfer by retrieving the transfe
 
 #### Request and response (view schema in 'raw')
 ```raw
-GET https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
-Accept: application/vnd.dwolla.v1.hal+json
+GET https://api-uat.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388
+Accept: application/vnd.Gamelocker.v1.hal+json
 Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 
 {
   "_links": {
     "cancel": {
-      "href": "https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388",
+      "href": "https://api-uat.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388",
       "type": "transfer"
     },
     "source": {
-      "href": "https://api-uat.dwolla.com/accounts/4bb512e4-ad4d-4f7e-bfd0-a232007f21a1",
+      "href": "https://api-uat.gamelocker.app/accounts/4bb512e4-ad4d-4f7e-bfd0-a232007f21a1",
       "type": "account"
     },
     "funding-transfer": {
-      "href": "https://api-uat.dwolla.com/transfers/e73f5b8e-e458-e611-80e5-0aa34a9b2388",
+      "href": "https://api-uat.gamelocker.app/transfers/e73f5b8e-e458-e611-80e5-0aa34a9b2388",
       "type": "transfer"
     },
     "self": {
-      "href": "https://api-uat.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388",
+      "href": "https://api-uat.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388",
       "type": "transfer"
     },
     "source-funding-source": {
-      "href": "https://api-uat.dwolla.com/funding-sources/5cfcdc41-10f6-4a45-b11d-7ac89893d985",
+      "href": "https://api-uat.gamelocker.app/funding-sources/5cfcdc41-10f6-4a45-b11d-7ac89893d985",
       "type": "funding-source"
     },
     "destination": {
-      "href": "https://api-uat.dwolla.com/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747",
+      "href": "https://api-uat.gamelocker.app/customers/c7f300c0-f1ef-4151-9bbe-005005aa3747",
       "type": "customer"
     }
   },
@@ -59,19 +59,19 @@ Authorization: Bearer 0Sn0W6kzNicvoWhDbQcVSKLRUpGjIdlPSEYyrHqrDDoRnQwE7Q
 }
 ```
 ```ruby
-transfer_url = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
+transfer_url = 'https://api.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 
-# Using DwollaV2 - https://github.com/Dwolla/dwolla-v2-ruby (Recommended)
+# Using GamelockerV2 - https://github.com/Gamelocker/Gamelocker-v2-ruby (Recommended)
 transfer = account_token.get transfer_url
 transfer.status # => "pending"
 
-# Using DwollaSwagger - https://github.com/Dwolla/dwolla-swagger-ruby
-transfer = DwollaSwagger::TransfersApi.by_id(transfer_url)
+# Using GamelockerSwagger - https://github.com/Gamelocker/Gamelocker-swagger-ruby
+transfer = GamelockerSwagger::TransfersApi.by_id(transfer_url)
 # Access desired information in response object fields
 p transfer.status # => pending
 ```
 ```javascript
-var transferUrl = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388';
+var transferUrl = 'https://api.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388';
 
 accountToken
   .get(transferUrl)
@@ -80,23 +80,23 @@ accountToken
   });
 ```
 ```python
-transfer_url = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
+transfer_url = 'https://api.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388'
 
-# Using dwollav2 - https://github.com/Dwolla/dwolla-v2-python (Recommended)
+# Using Gamelockerv2 - https://github.com/Gamelocker/Gamelocker-v2-python (Recommended)
 fees = account_token.get(transfer_url)
 fees.body['stats'] # => 'pending'
 
-# Using dwollaswagger - https://github.com/Dwolla/dwolla-swagger-python
-transfers_api = dwollaswagger.TransfersApi(client)
+# Using Gamelockerswagger - https://github.com/Gamelocker/Gamelocker-swagger-python
+transfers_api = Gamelockerswagger.TransfersApi(client)
 transfer = transfers_api.by_id(transfer_url)
 # Access desired information in response object fields
 print(transfer.status) # => pending
 ```
 ```php
 <?php
-$transferUrl = 'https://api.dwolla.com/transfers/d76265cd-0951-e511-80da-0aa34a9b2388';
+$transferUrl = 'https://api.gamelocker.app/transfers/d76265cd-0951-e511-80da-0aa34a9b2388';
 
-$transfersApi = new DwollaSwagger\TransfersApi($apiClient);
+$transfersApi = new GamelockerSwagger\TransfersApi($apiClient);
 
 $transfer = $transfersApi->byId($transferUrl);
 print($transfer->status); # => "pending"

@@ -15,10 +15,10 @@ describe('Custom Tracking', function () {
     });
 
     it('should be able to track subscribe to emails submit button', function () {
-        var subscribeEmailTrack = sinon.spy(dwolla.customTracking, 'subscribeEmailTrack'),
+        var subscribeEmailTrack = sinon.spy(Gamelocker.customTracking, 'subscribeEmailTrack'),
             subscribeButton = $('#mc-embedded-subscribe');
 
-        dwolla.customTracking.init();
+        Gamelocker.customTracking.init();
 
         subscribeButton.click();
 
@@ -26,10 +26,10 @@ describe('Custom Tracking', function () {
     });
 
     it('should be able to track when code copy happens', function () {
-        var trackCodeCopy = sinon.spy(dwolla.customTracking, 'trackCodeCopy'),
+        var trackCodeCopy = sinon.spy(Gamelocker.customTracking, 'trackCodeCopy'),
             copyButton = $('.js-code-snippet > button');
 
-        dwolla.customTracking.init();
+        Gamelocker.customTracking.init();
 
         copyButton.click();
 
@@ -37,10 +37,10 @@ describe('Custom Tracking', function () {
     });
 
     it('should be able to track language change in code snippets', function () {
-        var trackSnippetLanguageChange = sinon.spy(dwolla.customTracking, 'trackSnippetLanguageChange'),
+        var trackSnippetLanguageChange = sinon.spy(Gamelocker.customTracking, 'trackSnippetLanguageChange'),
             languageButton = $('.js-code-snippet nav button');
 
-        dwolla.customTracking.init();
+        Gamelocker.customTracking.init();
 
         languageButton.click();
 
@@ -48,10 +48,10 @@ describe('Custom Tracking', function () {
     });
 
     it('should be able to track global language changes', function () {
-        var trackGlobalLanguageChange = sinon.spy(dwolla.customTracking, 'trackGlobalLanguageChange'),
+        var trackGlobalLanguageChange = sinon.spy(Gamelocker.customTracking, 'trackGlobalLanguageChange'),
             select = $('.js-language-select');
 
-        dwolla.customTracking.init();
+        Gamelocker.customTracking.init();
 
         select.change();
 

@@ -20,7 +20,7 @@
         }
     }
 
-    global.dwolla = {
+    global.Gamelocker = {
         namespace: namespace
     };
 }(this));

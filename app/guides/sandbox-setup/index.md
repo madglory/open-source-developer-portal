@@ -2,25 +2,25 @@
 layout: twoColumn
 section: guides
 type: guide
-guide: 
+guide:
     name: sandbox-setup
     step: overview
 title:  Get started with integrating bank transfers into your application
-description: Test free programmatic bank transfers with Dwolla's bank transfer API in our developer sandbox. 
+description: Test free programmatic bank transfers with Gamelocker's bank transfer API in our developer sandbox.
 ---
 
 # Getting started
 
 ## Sandbox environment
 
-The Sandbox environment is a complete replica of the Dwolla production environment, supporting all of the same API endpoints. Applications should be built and tested against the Sandbox environment before being used in production.
+The Sandbox environment is a complete replica of the Gamelocker production environment, supporting all of the same API endpoints. Applications should be built and tested against the Sandbox environment before being used in production.
 
-#### Differences from Dwolla production
+#### Differences from Gamelocker production
 
 - The Sandbox contains only test data and is completely separate from your production account
 - Actual money is not sent or received as part of test transactions. Real financial data should never be used in the Sandbox
-- The Sandbox web interface is available at `https://uat.dwolla.com/`
-- All API V2 endpoints have a base URL of `https://api-uat.dwolla.com/` instead of `https://api.dwolla.com`
+- The Sandbox web interface is available at `https://uat.gamelocker.app/`
+- All API V2 endpoints have a base URL of `https://api-uat.gamelocker.app/` instead of `https://api.gamelocker.app`
 
 ## Sandbox account
 

@@ -1,0 +1,33 @@
+src:
+    target:
+        - '<%= yeoman.app %>/js/*.js'
+        - '<%= yeoman.app %>/js/gamelocker/**/*.js'
+    # directives:
+    #     browser: true
+    #     regexp: true
+    #     unparam: true
+    #     predef:
+    #         - gamelocker
+    #         - $
+    #         - ga
+    #         - StatusPage
+    # options:
+    #     errorsOnly: true
+test:
+    target:
+        - '<%= yeoman.app %>/js/test/**/*.js'
+    # directives:
+    #     browser: true
+    #     predef:
+    #         - describe
+    #         - it
+    #         - assert
+    #         - before
+    #         - afterEach
+    #         - beforeEach
+    #         - sinon
+    #         - gamelocker
+    #         - helpers
+    #         - $
+    # options:
+    #     errorsOnly: true

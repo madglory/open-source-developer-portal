@@ -3,7 +3,7 @@ check:
     - jekyll:check
     - sass
     - csslint:check
-    - jslint
+    - eslint
     - karma
 
 build:

@@ -10,9 +10,15 @@ autoprefixer:
   tasks:
     - copy:stageCss
     - autoprefixer:dist
-jekyll:
+# jekyll:
+#   files:
+#     - '<%= yeoman.app %>/**/*.{html,yml,md,mkd,markdown}'
+#     - '!<%= yeoman.app %>/_bower_components/**/*'
+#   tasks:
+#     - 'jekyll:server'
+metalsmith:
   files:
     - '<%= yeoman.app %>/**/*.{html,yml,md,mkd,markdown}'
     - '!<%= yeoman.app %>/_bower_components/**/*'
   tasks:
-    - 'jekyll:server'
+    - 'metalsmith:server'
